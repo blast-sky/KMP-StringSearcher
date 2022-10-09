@@ -5,6 +5,8 @@
 #include "NaiveSubstringSearcher.hpp"
 #include "KnuthMorrisPrattSubstringSearcher.hpp"
 
+#include "ConsoleView.hpp"
+
 std::string loadText(const std::string& path) {
 	auto result = std::string();
 	
@@ -67,18 +69,21 @@ void testSerchers(const std::string& substring, const std::string& filePostfix, 
 	ccfile << compareCountMeasurements[0] << '\n' << compareCountMeasurements[1] << '\n';
 }
 
-void testSerchers_fair() {
+void testSerchersFair() {
 	auto substring = "ababababa";
 	testSerchers(substring, "", [](int i) { return generateString(std::pow(10, i)); });
 }
 
-void testSerchers_unfair() {
+void testSerchersUnfair() {
 	auto substring = "aaaaaaaab";
 	testSerchers(substring, "_unfair", [](int i) { return std::string(std::pow(10, i), 'a'); });
 }
 
 int main() {
-	testSerchers_fair();
-	testSerchers_unfair();
+	//testSerchersFair();
+	//testSerchersUnfair();
+
+	auto view = ConsoleView();
+	view.interact();
 	return 0;
 }

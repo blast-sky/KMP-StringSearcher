@@ -37,7 +37,7 @@ public:
         funcAfterCompare(funcAfterCompare)
     {    }
 
-	std::vector<SubstringSearcherResult> search(const std::string& substring, const std::string& text) const override {
+    std::vector<SubstringSearcherResult> search(const std::string& substring, const std::string& text) const override {
         auto result = std::vector<SubstringSearcherResult>();
         auto pi = prefixFunction(substring + separatorChar + text);
         for (size_t i = 0; i < text.length(); i++) {
@@ -45,5 +45,5 @@ public:
                 result.push_back(SubstringSearcherResult(text, substring, i - substring.length() + 1));
         }
         return result;
-	}
+    }
 };
